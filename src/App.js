@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router';
 import './App.css';
+import About from './components/About';
 import Cards from './components/Cards.jsx';
-import SearchBar from './components/SearchBar.jsx';
-// import data from './data.js';
+import Nav from './components/Nav';
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
   };
 
   function onSearch(ciudad) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${API_KEY}&units=metric`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${API_KEY}&units=metric`)
       .then(r => r.json())
       .then((recurso) => {
         if(recurso.main !== undefined){
@@ -48,8 +50,9 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar onSearch={onSearch}/>
-      <Cards cities={cities} onRemove={handleRemoveCity}/>
+      <Route path="/" render={() => <Nav onSearch={onSearch}/> } />
+      <Route path="/" exact render={() => <Cards cities={cities} onRemove={handleRemoveCity}/> } />
+      <Route path="/about" component={About}/>
     </div>
   );
 }
