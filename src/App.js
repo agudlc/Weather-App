@@ -4,6 +4,7 @@ import './App.css';
 import About from './components/About';
 import Cards from './components/Cards.jsx';
 import Nav from './components/Nav';
+import Ciudad from "./components/Ciudad";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -53,6 +54,7 @@ function App() {
       <Route path="/" render={() => <Nav onSearch={onSearch}/> } />
       <Route path="/" exact render={() => <Cards cities={cities} onRemove={handleRemoveCity}/> } />
       <Route path="/about" component={About}/>
+      <Route path="/ciudad/:id" component={Ciudad}/>
     </div>
   );
 }

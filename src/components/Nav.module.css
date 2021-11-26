@@ -1,0 +1,15 @@
+.links,.nav,.brand {
+    display: flex;
+    align-items: center;
+}
+.nav {
+    justify-content: space-between;
+}
+.links {
+    gap: 1rem;
+}
+
+.brand {
+    gap: 0.5rem;
+   
+}
